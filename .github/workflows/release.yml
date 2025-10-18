@@ -39,6 +39,8 @@ jobs:
           cp -r core out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp -r assets out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp -r template out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          # 删除 template 中的 PDF 文件
+          find out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/template -name "*.pdf" -delete
           cp lib.typ out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp typst.toml out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp LICENSE out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
