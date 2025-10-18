@@ -1,0 +1,143 @@
+name: Release Archives
+
+on:
+  push:
+    tags:
+      - v*
+
+env:
+  PKG_NAME: universal-jlu-thesis
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Version: ${VERSION}"
+
+      - name: Create template archive
+        run: |
+          # 创建临时目录结构
+          TEMP_DIR="${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}"
+          mkdir -p "${TEMP_DIR}"
+          
+          # 复制template文件
+          cp -r template/* "${TEMP_DIR}/"
+          cp typst.toml "${TEMP_DIR}/"
+          cp LICENSE "${TEMP_DIR}/"
+          cp README.md "${TEMP_DIR}/"
+          cp CHANGELOG.md "${TEMP_DIR}/" 2>/dev/null || true
+          
+          # 创建tar.gz压缩包
+          tar -czf "${TEMP_DIR}.tar.gz" "${TEMP_DIR}"
+          
+          # 创建zip压缩包（Windows用户友好）
+          zip -r "${TEMP_DIR}.zip" "${TEMP_DIR}" -q
+          
+          echo "Archive files created successfully"
+          ls -lh "${TEMP_DIR}".*
+
+      - name: Generate checksums
+        id: checksums
+        run: |
+          VERSION=${{ steps.get_version.outputs.version }}
+          ARCHIVE_TAR="${{ env.PKG_NAME }}-${VERSION}.tar.gz"
+          ARCHIVE_ZIP="${{ env.PKG_NAME }}-${VERSION}.zip"
+          
+          # 生成SHA256校验和
+          sha256sum "${ARCHIVE_TAR}" > "SHA256SUMS.txt"
+          sha256sum "${ARCHIVE_ZIP}" >> "SHA256SUMS.txt"
+          
+          # 保存校验和用于Release描述
+          TAR_SHA256=$(sha256sum "${ARCHIVE_TAR}" | awk '{print $1}')
+          ZIP_SHA256=$(sha256sum "${ARCHIVE_ZIP}" | awk '{print $1}')
+          
+          echo "tar_sha256=${TAR_SHA256}" >> "$GITHUB_OUTPUT"
+          echo "zip_sha256=${ZIP_SHA256}" >> "$GITHUB_OUTPUT"
+          
+          echo "Checksums generated:"
+          cat SHA256SUMS.txt
+
+      - name: Create Release Notes
+        id: release_notes
+        run: |
+          cat > release_notes.md << 'EOF'
+          # ${{ env.PKG_NAME }} v${{ steps.get_version.outputs.version }}
+          
+          ## 下载
+          
+          本发布包含以下文件：
+          
+          - `${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz` - Linux/macOS用户推荐
+          - `${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip` - Windows用户推荐
+          
+          ## SHA256校验和
+          
+          用于验证下载文件的完整性：
+          
+          ```
+          tar.gz: ${{ steps.checksums.outputs.tar_sha256 }}
+          zip:    ${{ steps.checksums.outputs.zip_sha256 }}
+          ```
+          
+          ### 验证方法
+          
+          **Linux/macOS:**
+          ```bash
+          sha256sum -c SHA256SUMS.txt
+          ```
+          
+          **Windows PowerShell:**
+          ```powershell
+          # 验证tar.gz
+          $(Get-FileHash "${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz" -Algorithm SHA256).Hash
+          
+          # 验证zip
+          $(Get-FileHash "${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip" -Algorithm SHA256).Hash
+          ```
+          
+          ## 包含内容
+          
+          本发布包包含以下文件：
+          - 模板文件（template/）
+          - typst.toml 配置文件
+          - LICENSE 许可证
+          - README.md 说明文档
+          - CHANGELOG.md 更新日志
+          
+          ## 更新日志
+          
+          详见 [CHANGELOG.md](./CHANGELOG.md)
+          EOF
+          cat release_notes.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
+            ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
+            SHA256SUMS.txt
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "✅ Release created successfully!"
+          echo ""
+          echo "📦 Package: ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}"
+          echo "🏷️  Tag: ${{ github.ref_name }}"
+          echo "📁 Files:"
+          echo "   - ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz"
+          echo "   - ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip"
+          echo "   - SHA256SUMS.txt"
