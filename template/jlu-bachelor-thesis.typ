@@ -2,12 +2,12 @@
 // JLU Undergraduate Thesis Template
 // 
 // 使用方法：
-// 1. 在线导入：#import "@preview/universal-jlu-thesis:0.1.0": jlu-bachelor
-// 2. 本地安装：#import "@local/universal-jlu-thesis:0.1.0": jlu-bachelor
+// 1. 在线导入：#import "@preview/universal-jlu-thesis:0.1.4": jlu-bachelor
+// 2. 本地安装：#import "@local/universal-jlu-thesis:0.1.4": jlu-bachelor
 // 3. 模板开发使用：#import "../lib.typ": jlu-bachelor
 
-#import "@preview/universal-jlu-thesis:0.1.0": jlu-bachelor
-// #import "@local/universal-jlu-thesis:0.1.0": jlu-bachelor  
+#import "@preview/universal-jlu-thesis:0.1.4": jlu-bachelor
+// #import "@local/universal-jlu-thesis:0.1.4": jlu-bachelor  
 // #import "../lib.typ": jlu-bachelor
 
 // 编译命令: typst compile jlu-bachelor-thesis.typ
