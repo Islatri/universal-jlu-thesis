@@ -67,4 +67,4 @@ jobs:
           git checkout -b "${{ env.PKG_NAME }}-${{ env.PKG_VERSION }}"
           git add .
           git commit -m "${{ env.PKG_NAME }}: ${{ env.PKG_VERSION }}"
-          git push --set-upstream origin "${{ env.PKG_NAME }}-${{ env.PKG_VERSION }}"
+          git push --set-upstream origin "${{ env.PKG_NAME }}-${{ env.PKG_VERSION }}" --force
