@@ -1,6 +1,6 @@
 [package]
 name = "universal-jlu-thesis"
-version = "0.1.2"
+version = "0.1.3"
 entrypoint = "lib.typ"
 authors = ["HakoChest <zoneherobrine@gmail.com>"]
 license = "MIT"
@@ -12,6 +12,6 @@ exclude = []
 compiler = "0.13.0"
 
 [template]
-path = "templates"
+path = "template"
 entrypoint = "jlu-bachelor-thesis.typ"
 thumbnail = "thumbnail.png"

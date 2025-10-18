@@ -35,8 +35,16 @@ jobs:
       - name: Build package
         run: |
           mkdir -p out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}
-          cp -r template/* out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          # 复制所有需要的文件和文件夹
+          cp -r core out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp -r assets out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp -r template out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp lib.typ out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp typst.toml out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp LICENSE out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp README.md out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp refs.bib out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp thumbnail.png out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
 
       - name: Checkout package registry
         uses: actions/checkout@v4
