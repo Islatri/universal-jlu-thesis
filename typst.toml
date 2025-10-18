@@ -1,6 +1,6 @@
 [package]
 name = "universal-jlu-thesis"
-version = "0.1.5"
+version = "0.1.7"
 entrypoint = "lib.typ"
 authors = ["HakoChest <zoneherobrine@gmail.com>"]
 license = "MIT"
