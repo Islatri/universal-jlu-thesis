@@ -8,6 +8,10 @@ on:
 env:
   PKG_NAME: universal-jlu-thesis
 
+permissions:
+  contents: write
+  packages: read
+
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -119,17 +123,46 @@ jobs:
           cat release_notes.md
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: |
-            ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
-            ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
-            SHA256SUMS.txt
+          tag_name: ${{ github.ref_name }}
+          release_name: ${{ env.PKG_NAME }} ${{ github.ref_name }}
           body_path: release_notes.md
           draft: false
           prerelease: false
+
+      - name: Upload tar.gz asset
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
+          asset_name: ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
+          asset_content_type: application/gzip
+
+      - name: Upload zip asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
+          asset_name: ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload SHA256SUMS
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./SHA256SUMS.txt
+          asset_name: SHA256SUMS.txt
+          asset_content_type: text/plain
 
       - name: Summary
         run: |
