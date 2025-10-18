@@ -47,7 +47,7 @@
 #### 方法 A：从 Typst Universe 初始化（最快）
 
 ```bash
-typst init @preview/universal-jlu-thesis
+typst init @preview/universal-jlu-thesis:0.1.7
 cd universal-jlu-thesis
 typst compile jlu-bachelor-thesis.typ
 ```
@@ -164,7 +164,7 @@ universal-jlu-thesis/
 #import "@preview/algo:0.3.6": algo, i, d, comment, code
 
 // 或使用 lovelace
-#import "@preview/lovelace:0.2.0": *
+#import "@preview/lovelace:0.3.0": *
 ```
 
 ### 字体依赖
