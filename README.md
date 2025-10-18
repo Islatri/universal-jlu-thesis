@@ -5,6 +5,8 @@
 
 一个优雅、易用的吉林大学毕业设计论文 Typst 模板，完全遵循学校的官方格式要求。
 
+![jlu-dev-cover.png](https://s2.loli.net/2025/10/18/U7pTgl59nRWjLD4.png)
+
 > [!WARNING]
 > **本模板为民间开源项目**，非官方出品，使用前请了解：
 >

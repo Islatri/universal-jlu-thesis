@@ -1,0 +1,60 @@
+name: Package and push to registry repo
+
+on:
+  push:
+    tags: [ v* ]
+
+env:
+  REGISTRY_REPO: Islatri/typst-packages
+  PATH_PREFIX: packages/preview
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup typst
+        uses: typst-community/setup-typst@v3
+        with:
+          typst-version: latest
+
+      - name: Determine and check package metadata
+        run: |
+          PKG_NAME="universal-jlu-thesis"
+          VERSION=$(grep '^version' typst.toml | head -1 | cut -d'"' -f2)
+          echo "PKG_NAME=${PKG_NAME}" >> "${GITHUB_ENV}"
+          echo "PKG_VERSION=${VERSION}" >> "${GITHUB_ENV}"
+
+          if [[ "${GITHUB_REF_NAME}" != "v${VERSION}" ]]; then
+            echo "版本号不匹配: ${VERSION} vs ${GITHUB_REF_NAME}" >&2
+            exit 1
+          fi
+
+      - name: Build package
+        run: |
+          mkdir -p out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}
+          cp -r template/* out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+          cp typst.toml out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
+
+      - name: Checkout package registry
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.REGISTRY_REPO }}
+          token: ${{ secrets.REGISTRY_TOKEN }}
+          path: typst-packages
+
+      - name: Release package
+        run: |
+          mkdir -p "typst-packages/${{ env.PATH_PREFIX }}/${{ env.PKG_NAME }}"
+          cp -r "out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}" \
+                "typst-packages/${{ env.PATH_PREFIX }}/${{ env.PKG_NAME }}/"
+
+          cd typst-packages
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git checkout -b "${{ env.PKG_NAME }}-${{ env.PKG_VERSION }}"
+          git add .
+          git commit -m "${{ env.PKG_NAME }}: ${{ env.PKG_VERSION }}"
+          git push --set-upstream origin "${{ env.PKG_NAME }}-${{ env.PKG_VERSION }}"
