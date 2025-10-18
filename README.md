@@ -78,15 +78,14 @@ typst watch ./template/jlu-bachelor-thesis.typ --root ./
 3. 搜索并选择 `universal-jlu-thesis`
 4. 即可开始在线编辑
 
-> [!NOTE]
-> Web App 的排版渲染在浏览器本地执行，实时预览体验与本地编辑相近。
->
-> 注意：Web App 默认不提供中文字体，建议手动上传以下字体文件以获得最佳排版效果：
->
-> - SimSun.ttf（宋体）
-> - SimHei.ttf（黑体）
-> - Kaiti.ttf（楷体）
-> - TimesNewRoman.ttf 及其变体
+**Note:** Web App 的排版渲染在浏览器本地执行，实时预览体验与本地编辑相近。
+
+Web App 默认不提供中文字体，建议手动上传以下字体文件以获得最佳排版效果：
+
+- SimSun.ttf（宋体）
+- SimHei.ttf（黑体）
+- Kaiti.ttf（楷体）
+- TimesNewRoman.ttf 及其变体
 
 ### 基本使用流程
 
@@ -96,8 +95,7 @@ typst watch ./template/jlu-bachelor-thesis.typ --root ./
 4. 在 `refs.bib` 中添加参考文献
 5. 运行编译命令生成 PDF
 
-> [!TIP]
-> 推荐使用 VS Code 配合 Tinymist Typst 插件进行编辑，可获得语法高亮、实时预览、代码补全等功能。
+**Tip:** 推荐使用 VS Code 配合 Tinymist Typst 插件进行编辑，可获得语法高亮、实时预览、代码补全等功能。
 
 ## 文件结构
 
