@@ -1,9 +1,11 @@
-# 吉林大学毕业设计论文模板
+# 吉林大学毕业设计论文模板 | Jilin University Bachelor Thesis Typst Template
 
 [![Typst Package](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FIslatri%2Funiversal-jlu-thesis%2Frefs%2Fheads%2Fmain%2Ftypst.toml&query=%24.package.version&prefix=v&logo=typst&label=package&color=239dae)](https://typst.app/universe/package/universal-jlu-thesis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 一个优雅、易用的吉林大学毕业设计论文 Typst 模板，完全遵循学校的官方格式要求。
+
+A elegant and easy-to-use Typst template for Jilin University (a university in China) bachelor's thesis, fully compliant with the official formatting requirements.
 
 ![jlu-dev-cover.png](https://s2.loli.net/2025/10/18/U7pTgl59nRWjLD4.png)
 
@@ -265,7 +267,7 @@ universal-jlu-thesis/
 ## 致谢
 
 - 感谢 [universal-hit-thesis](https://github.com/hitszosa/universal-hit-thesis) 为本模板的框架设计和开发思路提供启发
-- 感谢 [JLUThesis](https://github.com/jlshen025/JLUThesis) 提供的吉大毕设 LaTeX 实现参考
+- 感谢 [JLUThesis](https://github.com/jlshen025/JLUThesis) 提供的吉大毕设 LaTeX 实现参考以及LOGO
 - 感谢吉林大学提供的官方论文格式规范文档。`docs` 目录包含以下资料：
   - 参考文献使用说明
   - 吉林大学本科生毕业论文（设计）撰写要求与书写格式（多个版本）
@@ -298,3 +300,17 @@ universal-jlu-thesis/
 ---
 
 **如果这个项目对你有帮助，请考虑给个 Star ⭐️ 来支持我们！**
+
+## 第三方资源 / Third-party assets
+
+资源：template/assets/images/logo.png
+来源：jlshen025 / JLUThesis（GitHub）
+许可证：MIT License
+署名："logo.png © jlshen025 (JLUThesis), 许可证: MIT License，来源: <https://github.com/jlshen025/JLUThesis/blob/master/figures/logo.png>"
+说明：MIT 许可证允许再分发和衍生作品，但请保留原始版权声明与许可证文本。如果你将本仓库用于发布/分发（例如上传到 Typst Universe），本图像已标注为 MIT，可随仓库一并分发。
+
+Asset: template/assets/images/logo.png
+Source: jlshen025 / JLUThesis (GitHub)
+License: MIT License
+Attribution: "logo.png © jlshen025 (JLUThesis), License: MIT License, Source: <https://github.com/jlshen025/JLUThesis/blob/master/figures/logo.png>"
+Note: The MIT license permits redistribution and derivative works provided that the copyright and license text are included. If you publish/distribute this project (for example on Typst Universe), this image is licensed MIT and may be distributed with the repository;
