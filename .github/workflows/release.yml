@@ -45,7 +45,6 @@ jobs:
           cp typst.toml out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp LICENSE out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp README.md out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
-          cp refs.bib out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
           cp thumbnail.png out/${{ env.PKG_NAME }}/${{ env.PKG_VERSION }}/
 
       - name: Checkout package registry
