@@ -2,13 +2,13 @@
 // JLU Undergraduate Thesis Template
 // 
 // 使用方法：
-// 1. 在线导入：#import "@preview/universal-jlu-thesis:0.1.7": jlu-bachelor, bibliography_with
-// 2. 本地安装：#import "@local/universal-jlu-thesis:0.1.7": jlu-bachelor, bibliography_with
-// 3. 模板开发使用：#import "../lib.typ": jlu-bachelor, bibliography_with
+// 1. 在线导入：#import "@preview/universal-jlu-thesis:0.1.7": jlu-bachelor
+// 2. 本地安装：#import "@local/universal-jlu-thesis:0.1.7": jlu-bachelor
+// 3. 模板开发使用：#import "../lib.typ": jlu-bachelor
 
-#import "@preview/universal-jlu-thesis:0.1.7": jlu-bachelor, bibliography_with
-// #import "@local/universal-jlu-thesis:0.1.7": jlu-bachelor, bibliography_with
-// #import "../lib.typ": jlu-bachelor, bibliography_with
+#import "@preview/universal-jlu-thesis:0.1.7": jlu-bachelor
+// #import "@local/universal-jlu-thesis:0.1.7": jlu-bachelor  
+// #import "../lib.typ": jlu-bachelor
 
 // 编译命令: typst compile jlu-bachelor-thesis.typ
 // 实时预览: typst watch jlu-bachelor-thesis.typ
@@ -37,7 +37,7 @@
     numbering-style: "chapter", // "global", "chapter", "chapter-dash"
   ),
   
-  bibliography: bibliography_with("refs.bib"),
+  bib-file: "refs.bib",
   
   abstract-cn: [
     // Ciallo～(∠・ω< )⌒☆ 这里是超级可爱的中文摘要！

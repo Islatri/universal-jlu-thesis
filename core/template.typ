@@ -26,7 +26,7 @@
     numbering-style: "chapter", // "global", "chapter", "chapter-dash"
   ),
   
-  bibliography: none,
+  bib-file: none, // 参考文献文件路径
   
   abstract-cn: [],
   keywords-cn: (),
@@ -206,8 +206,7 @@
   }
 
   // 参考文献
-  // 优先执行用户传入的 bibliography block（路径在用户上下文解析）
-  if bibliography != none {
-    bibliography
-  } 
+  if bib-file != none {
+    bibliography-page(bib-file)
+  }
 }

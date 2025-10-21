@@ -45,7 +45,7 @@
   
   // 插入参考文献
   bibliography(
-    bib-file,
+    locate(bib-file), // 使用 locate 函数在用户工作目录中查找文件
     title: none,
     style: "gb-7714-2015-numeric"
   )
