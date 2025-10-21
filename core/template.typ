@@ -26,7 +26,7 @@
     numbering-style: "chapter", // "global", "chapter", "chapter-dash"
   ),
   
-  bib-file: none, // 参考文献文件路径
+  bibliography: none, // 改为接收 bibliography 对象
   
   abstract-cn: [],
   keywords-cn: (),
@@ -205,8 +205,8 @@
     acknowledgement
   }
 
-  // 参考文献
-  if bib-file != none {
-    bibliography-page(bib-file)
-  }
+    // 参考文献
+    if bibliography != none {
+      bibliography-page(bibliography)
+    }
 }

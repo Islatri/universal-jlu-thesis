@@ -21,6 +21,8 @@
   doc
 )
 
+#let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric")
+
 #show: jlu-bachelor.with(
   thesis-info: (
     title-cn: "基于深度学习的二次元角色识别算法研究",
@@ -37,7 +39,7 @@
     numbering-style: "chapter", // "global", "chapter", "chapter-dash"
   ),
   
-  bib-file: "refs.bib",
+  bibliography: bib, // 传入已解析的 bibliography 对象
   
   abstract-cn: [
     // Ciallo～(∠・ω< )⌒☆ 这里是超级可爱的中文摘要！

@@ -2,9 +2,6 @@
 // 吉林大学学位论文模板
 
 #import "core/template.typ": jlu-thesis
-#import "core/bibliography.typ": bibliography_with
-
-#let bibliography_with = bibliography_with
 
 // 导出主模板函数
 #let jlu-bachelor = jlu-thesis
