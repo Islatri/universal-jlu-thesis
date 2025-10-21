@@ -44,10 +44,9 @@
   }
   
   // 插入参考文献
-  // 注意：bib-file 路径应该相对于项目根目录，因为使用了 --root 参数
   bibliography(
-    "../" + bib-file,  // 从 core/ 目录向上一级到达根目录
-    title: none, // 不显示默认标题，我们已经自定义了
-    style: "gb-7714-2015-numeric" // 使用国标格式
+    bib-file,
+    title: none,
+    style: "gb-7714-2015-numeric"
   )
 }
