@@ -37,7 +37,7 @@
     numbering-style: "chapter", // "global", "chapter", "chapter-dash"
   ),
   
-  bib-file: "refs.bib",
+  bibliography: bibliography_with("refs.bib"),
   
   abstract-cn: [
     // Ciallo～(∠・ω< )⌒☆ 这里是超级可爱的中文摘要！

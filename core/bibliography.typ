@@ -50,3 +50,12 @@
     style: "gb-7714-2015-numeric"
   )
 }
+
+// 返回一个可传递给主模板的 block，用户在自己的文档上下文中调用
+// 示例用法（用户侧）:
+// #import "@preview/universal-jlu-thesis:0.1.7": jlu-bachelor, bibliography_with
+// #show: jlu-bachelor.with(bibliography: bibliography_with("refs.bib"))
+#let bibliography_with(bib-file, style: "gb-7714-2015-numeric") = {
+  // 返回一个 block（延迟执行），当该 block 在主文档/模板中被执行时，会插入参考文献。
+  { bibliography-page(bib-file) }
+}
