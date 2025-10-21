@@ -3,9 +3,7 @@
 [![Typst Package](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FIslatri%2Funiversal-jlu-thesis%2Frefs%2Fheads%2Fmain%2Ftypst.toml&query=%24.package.version&prefix=v&logo=typst&label=package&color=239dae)](https://typst.app/universe/package/universal-jlu-thesis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-一个优雅、易用的吉林大学毕业设计论文 Typst 模板，完全遵循学校的官方格式要求。
-
-A elegant and easy-to-use Typst template for Jilin University (a university in China) bachelor's thesis, fully compliant with the official formatting requirements.
+一个优雅、易用的吉林大学毕业设计论文 Typst 模板，完全遵循学校的官方格式要求。 | A elegant and easy-to-use Typst template for Jilin University (a university in China) bachelor's thesis, fully compliant with the official formatting requirements.
 
 ![jlu-dev-cover.png](https://s2.loli.net/2025/10/18/U7pTgl59nRWjLD4.png)
 
