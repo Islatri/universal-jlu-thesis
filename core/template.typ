@@ -2,6 +2,7 @@
 #import "fonts.typ": *
 #import "cover.typ": *
 #import "commitment.typ": *
+#import "authorization.typ": *
 #import "abstract.typ": *
 #import "toc.typ": *
 #import "headings.typ": *
@@ -36,6 +37,12 @@
   conclusion: [],
   achievement: none,
   acknowledgement: [],
+  
+  // 版权使用授权书参数
+  authorization-confidential: false,
+  authorization-author-sig: none,
+  authorization-mentor-sig: none,
+  authorization-date: auto,
   
   body
 ) = {
@@ -144,6 +151,14 @@
   
   // 承诺书
   commitment-page()
+  
+  // 版权使用授权书
+  authorization-page(
+    confidential: authorization-confidential,
+    author-signature-img: authorization-author-sig,
+    mentor-signature-img: authorization-mentor-sig,
+    date: authorization-date
+  )
   
   // 中文摘要
   chinese-abstract(abstract-cn, keywords-cn)

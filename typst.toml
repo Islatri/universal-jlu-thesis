@@ -1,6 +1,6 @@
 [package]
 name = "universal-jlu-thesis"
-version = "0.1.7"
+version = "0.1.8"
 entrypoint = "lib.typ"
 authors = ["HakoChest <zoneherobrine@gmail.com>"]
 license = "MIT"
@@ -9,7 +9,7 @@ repository = "https://github.com/islatri/universal-jlu-thesis"
 keywords = ["Jilin University", "thesis", "template"]
 categories = ["thesis"]
 exclude = ["template/jlu-bachelor-thesis.pdf"]
-compiler = "0.13.0"
+compiler = "0.14.2"
 
 [template]
 path = "template"

@@ -10,8 +10,6 @@
     "SimHei",           // 黑体
     "KaiTi",           // 楷体
     "Microsoft YaHei UI",
-    "Noto Sans SC",     // 您系统中有的Noto字体
-    "Noto Serif SC",
     "Arial Unicode MS", // 作为最后的回退
   ),
   

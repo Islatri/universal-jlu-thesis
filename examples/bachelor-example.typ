@@ -103,6 +103,12 @@
     
     Ciallo～(∠・ω< )⌒☆ 愿二次元的美好永远伴随我们！让我们继续在这个充满爱与梦想的世界中探索前行！
   ],
+  
+  // 版权使用授权书参数（可选）
+  // authorization-confidential: false, // 改为 true 表示保密
+  // authorization-author-sig: "assets/images/author-signature.png", // 作者签名图片路径
+  // authorization-mentor-sig: "assets/images/mentor-signature.png", // 指导教师签名图片路径
+  // authorization-date: datetime(year: 2024, month: 10, day: 25), // 日期，默认为今天
 )
 
 // ============================================================================
