@@ -6,9 +6,9 @@
 // 2. 本地安装：#import "@local/universal-jlu-thesis:0.1.8": jlu-bachelor
 // 3. 模板开发使用：#import "../lib.typ": jlu-bachelor
 
-// #import "@preview/universal-jlu-thesis:0.1.8": jlu-bachelor
+#import "@preview/universal-jlu-thesis:0.1.8": jlu-bachelor
 // #import "@local/universal-jlu-thesis:0.1.8": jlu-bachelor  
-#import "../lib.typ": jlu-bachelor
+// #import "../lib.typ": jlu-bachelor
 
 // 编译命令: typst compile jlu-bachelor-thesis.typ
 // 实时预览: typst watch jlu-bachelor-thesis.typ
@@ -28,10 +28,12 @@
     title-cn: "基于深度学习的二次元角色识别算法研究",
     title-en: "Research on 2D Character Recognition Algorithm Based on Deep Learning",
     author: "二次元雪豹",
+    class: "44",
     student-id: "20114514",
     school: "通信工程学院",
     major: "通信工程", 
     mentor: "芝士雪豹",
+    mentor-title: "副教授",
     // date: datetime(year: 2024, month: 10, day: 16),
   ),
   

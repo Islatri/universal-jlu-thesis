@@ -60,15 +60,103 @@
   )
 }
 
+// 多字段单行函数 - 用于学生姓名班级学号和指导教师职称
+#let multi-field-line(fields) = {
+  context {
+    // 固定总宽度与 info-line 一致
+    let total-width = 13.2cm
+    // 为每个标签分配足够宽度，避免中文被挤成竖排
+    let label-widths = fields.map(f => {
+      measure(text(size: 16pt, weight: "bold", font: fonts.song)[#f.label]).width + 0.2em
+    })
+    let labels-total-width = label-widths.fold(0pt, (a, b) => a + b)
+
+    // 内容区优先使用传入宽度，保证 width 参数生效
+    let available-content-width = total-width - labels-total-width
+    let requested-content-widths = fields.map(f => f.width)
+    let requested-content-widths-sum = requested-content-widths.fold(0pt, (a, b) => a + b)
+    let width-delta = available-content-width - requested-content-widths-sum
+    let content-widths = if fields.len() > 0 {
+      // 保持前面字段宽度不变，把总宽度误差吸收到最后一个字段
+      range(0, fields.len()).map(i => {
+        if i == fields.len() - 1 {
+          requested-content-widths.at(i) + width-delta
+        } else {
+          requested-content-widths.at(i)
+        }
+      })
+    } else {
+      ()
+    }
+    
+    stack(
+      spacing: 0pt,
+      // 内容行
+      box(
+        width: total-width,
+        [
+          #set text(size: 16pt, weight: "bold", font: fonts.song)
+          #grid(
+            columns: range(0, fields.len()).map(i => (label-widths.at(i), content-widths.at(i))).flatten(),
+            column-gutter: 0pt,
+            row-gutter: 0pt,
+            align: (left, center),
+            ..range(0, fields.len()).map(i => {
+              let f = fields.at(i)
+              (
+                box(
+                  width: label-widths.at(i),
+                  height: 1.2em,
+                  [
+                    #set align(left + horizon)
+                    #f.label
+                  ]
+                ),
+                box(
+                  width: content-widths.at(i),
+                  height: 1.2em,
+                  [
+                    #set align(center + horizon)
+                    #f.content
+                    #v(0.1em)
+                  ]
+                )
+              )
+            }).flatten()
+          )
+        ]
+      ),
+      // 下划线行
+      v(0.1em),
+      box(
+        width: total-width,
+        grid(
+          columns: range(0, fields.len()).map(i => (label-widths.at(i), content-widths.at(i))).flatten(),
+          column-gutter: 0pt,
+          row-gutter: 0pt,
+          ..range(0, fields.len()).map(i => {
+            (
+              [],
+              title-underline(width: content-widths.at(i))
+            )
+          }).flatten()
+        )
+      )
+    )
+  }
+}
+
 // 封面制作函数 - 压缩间距版本
 #let make-cover(
   ctitle: "",
   etitle: "", 
   author: "",
+  class: "",
   student-id: "",
   school: "",
   major: "",
   mentor: "",
+  mentor-title: "",
   date: auto
 ) = {
   // 处理日期格式
@@ -114,11 +202,19 @@
     // 学生信息 - 压缩间距
     #stack(
       spacing: 17.5pt,
-      info-line([学生姓名], author),
-      info-line([学#h(2em)号], student-id),
+      // 第一行：学生姓名、班级、学号
+      multi-field-line((
+        (label: [学生姓名], content: author, width: 4.4cm),
+        (label: [班级], content: class, width: 1.6cm),
+        (label: [学号], content: student-id, width: 3.6cm),
+      )),
       info-line([学#h(2em)院], school),
       info-line([专#h(2em)业], major),
-      info-line([指导教师], mentor),
+      // 最后一行：指导教师、职称
+      multi-field-line((
+        (label: [指导教师], content: mentor, width: 4.8cm),
+        (label: [职称], content: mentor-title, width: 4.8cm),
+      )),
     )
     
     #v(60pt)

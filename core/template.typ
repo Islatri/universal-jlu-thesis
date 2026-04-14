@@ -16,10 +16,12 @@
     title-cn: "",
     title-en: "",
     author: "",
+    class: "",
     student-id: "",
     school: "",
     major: "",
     mentor: "",
+    mentor-title: "",
     date: auto,
   ),
   
@@ -142,10 +144,12 @@
     ctitle: thesis-info.at("title-cn", default: ""),
     etitle: thesis-info.at("title-en", default: ""),
     author: thesis-info.at("author", default: ""),
+    class: thesis-info.at("class", default: ""),
     student-id: thesis-info.at("student-id", default: ""),
     school: thesis-info.at("school", default: ""),
     major: thesis-info.at("major", default: ""),
     mentor: thesis-info.at("mentor", default: ""),
+    mentor-title: thesis-info.at("mentor-title", default: ""),
     date: final-date
   )
   
