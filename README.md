@@ -47,7 +47,7 @@
 #### 方法 A：从 Typst Universe 初始化（最快）
 
 ```bash
-typst init @preview/universal-jlu-thesis:0.1.7
+typst init @preview/universal-jlu-thesis:0.1.8
 cd universal-jlu-thesis
 typst compile jlu-bachelor-thesis.typ
 ```
@@ -153,7 +153,7 @@ universal-jlu-thesis/
 
 ### 必选依赖
 
-- **Typst** 0.13.0 或更高版本
+- **Typst** 0.14.0 或更高版本
 
 ### 可选依赖
 
