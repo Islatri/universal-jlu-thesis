@@ -13,7 +13,7 @@
 // 编译命令: typst compile jlu-bachelor-thesis.typ
 // 实时预览: typst watch jlu-bachelor-thesis.typ
 
-#import "@preview/cuti:0.3.0": show-cn-fakebold, show-fakebold
+#import "@preview/cuti:0.4.0": show-cn-fakebold, show-fakebold
 #show: show-cn-fakebold
 #show: doc => show-fakebold(
   reg-exp: "[^p{script=Han}！-･〇-〰—]+", 

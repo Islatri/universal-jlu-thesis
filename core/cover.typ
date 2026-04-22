@@ -205,8 +205,8 @@
       // 第一行：学生姓名、班级、学号
       multi-field-line((
         (label: [学生姓名], content: author, width: 4.4cm),
-        (label: [班级], content: class, width: 1.6cm),
-        (label: [学号], content: student-id, width: 3.6cm),
+        (label: [班级], content: class, width: 1.2cm),
+        (label: [学号], content: student-id, width: 4.0cm),
       )),
       info-line([学#h(2em)院], school),
       info-line([专#h(2em)业], major),
