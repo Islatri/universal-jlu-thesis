@@ -282,7 +282,7 @@ universal-jlu-thesis/
 - 📖 [Typst 官方文档](https://typst.app/docs)
 - 📚 [Typst Universe 包列表](https://typst.app/universe)
 - 🏫 [吉林大学官方网站](https://www.jlu.edu.cn)
-- � [论文格式要求参考](https://github.com/Islatri/universal-jlu-thesis/tree/main/docs)
+- � [论文格式要求参考](https://github.com/Islatri/universal-jlu-thesis/tree/961b9bff36ea0c1d53f38a58c1f92fb0f418e0bf/docs)
 - 💬 [GitHub 讨论区](https://github.com/Islatri/universal-jlu-thesis/discussions)
 
 ## 许可证
@@ -304,11 +304,11 @@ universal-jlu-thesis/
 资源：template/assets/images/logo.png
 来源：jlshen025 / JLUThesis（GitHub）
 许可证：MIT License
-署名："logo.png © jlshen025 (JLUThesis), 许可证: MIT License，来源: <https://github.com/jlshen025/JLUThesis/blob/master/figures/logo.png>"
+署名："logo.png © jlshen025 (JLUThesis), 许可证: MIT License，来源: <https://github.com/jlshen025/JLUThesis/blob/87476eb1a320716c7d1c5711bba10a035868a354/figures/logo.png>"
 说明：MIT 许可证允许再分发和衍生作品，但请保留原始版权声明与许可证文本。如果你将本仓库用于发布/分发（例如上传到 Typst Universe），本图像已标注为 MIT，可随仓库一并分发。
 
 Asset: template/assets/images/logo.png
 Source: jlshen025 / JLUThesis (GitHub)
 License: MIT License
-Attribution: "logo.png © jlshen025 (JLUThesis), License: MIT License, Source: <https://github.com/jlshen025/JLUThesis/blob/master/figures/logo.png>"
+Attribution: "logo.png © jlshen025 (JLUThesis), License: MIT License, Source: <https://github.com/jlshen025/JLUThesis/blob/87476eb1a320716c7d1c5711bba10a035868a354/figures/logo.png>"
 Note: The MIT license permits redistribution and derivative works provided that the copyright and license text are included. If you publish/distribute this project (for example on Typst Universe), this image is licensed MIT and may be distributed with the repository;
