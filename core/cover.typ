@@ -6,7 +6,7 @@
 }
 
 // 修复后的多行标题处理函数 - 支持1-2行自适应
-#let title-with-lines(content, max-width: 310pt, font-size: 16pt) = {
+#let title-with-lines(content, max-width: 310pt, font-size: 16pt, font-family: fonts.song) = {
   // 创建带下划线的容器
   stack(
     spacing: 0pt,
@@ -16,7 +16,7 @@
       height: 2.8em, // 设置为稍大的固定高度以容纳2行
       [
         #set align(center + top) // 改为顶部对齐，避免单行时居中到中间
-        #set text(size: font-size, weight: "bold", font: fonts.song)
+        #set text(size: font-size, weight: "bold", font: font-family)
         #set par(leading: 1em) // 设置行间距
         #content
       ]
@@ -190,11 +190,11 @@
       
       // 中文题目行
       [#text(size: 16pt, weight: "bold", font: fonts.song)[中文题目]],
-      title-with-lines(ctitle, font-size: 16pt),
+      title-with-lines(ctitle, font-size: 16pt, font-family: fonts.song),
       
       // 英文题目行  
       [#text(size: 16pt, weight: "bold", font: fonts.song)[英文题目]],
-      title-with-lines(etitle, font-size: 16pt),
+      title-with-lines(etitle, font-size: 16pt, font-family: fonts.main),
     )
     
     #v(80pt)

@@ -5,7 +5,7 @@
 
 一个优雅、易用的吉林大学毕业设计论文 Typst 模板，完全遵循学校的官方格式要求。 | A elegant and easy-to-use Typst template for Jilin University (a university in China) bachelor's thesis, fully compliant with the official formatting requirements.
 
-![jlu-dev-cover.png](https://s2.loli.net/2025/10/18/U7pTgl59nRWjLD4.png)
+![jlu-dev-cover.png](https://s3.bmp.ovh/2026/04/23/q4ufIinO.png)
 
 > **警告：本模板为民间开源项目**，非官方出品，使用前请了解：
 >
