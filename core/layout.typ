@@ -13,7 +13,7 @@
       #align(center)[摘要]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
   ),
   abstract-en: (
     header: context [
@@ -21,7 +21,7 @@
       #align(center)[Abstract]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
   ),
   toc: (
     header: context [
@@ -29,7 +29,7 @@
       #align(center)[目录]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
   ),
   normal: (
     header: context [
@@ -47,7 +47,7 @@
       ]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
   ),
 )
 
@@ -85,7 +85,7 @@
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: none,
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
@@ -97,7 +97,7 @@
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: none,
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
@@ -113,7 +113,7 @@
       #align(center)[目录]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
@@ -139,7 +139,7 @@
       ]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )

@@ -91,7 +91,7 @@
     align(center)[
       #text(size: 16pt, weight: "bold", font: fonts.song)[
         #if it.numbering != none {
-          [第#counter(heading).display()章#h(1em)]
+          [第 #counter(heading).display() 章 ]
         }
         #it.body
       ]
@@ -104,18 +104,18 @@
     set par(first-line-indent: 0em)
     align(left)[
       #text(size: 14pt, weight: "bold", font: fonts.song)[
-        #counter(heading).display()#h(1em)#it.body
+        #counter(heading).display() #it.body
       ]
     ]
     v(3pt)
   }
-  
+
   show heading.where(level: 3): it => {
     v(12pt, weak: true)
     set par(first-line-indent: 0em)
     align(left)[
       #text(size: 14pt, weight: "bold", font: fonts.song)[
-        #counter(heading).display()#h(1em)#it.body
+        #counter(heading).display() #it.body
       ]
     ]
     v(3pt)
@@ -126,7 +126,7 @@
     set par(first-line-indent: 0em)
     align(left)[
       #text(size: 12pt, font: fonts.song)[
-        #counter(heading).display()#h(1em)#it.body
+        #counter(heading).display() #it.body
       ]
     ]
   }
@@ -194,7 +194,7 @@
       ]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )

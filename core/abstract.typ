@@ -6,7 +6,7 @@
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: none,
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
@@ -16,12 +16,12 @@
   [
     #set par(leading: 1.5em)  // 1.5倍行距，使用em单位
     
-    // 标题（4号字体，居中）
+    // 标题（三号字体，居中）
     #align(center)[
       #if is-chinese [
-        #text(size: 14pt, weight: "bold", font: fonts.hei)[#title]
+        #text(size: 16pt, weight: "bold", font: fonts.hei)[#title]
       ] else [
-        #text(size: 14pt, weight: "bold")[#title]
+        #text(size: 16pt, weight: "bold")[#title]
       ]
     ]
     
@@ -42,15 +42,14 @@
     // 关键词（小4号字体，无缩进）
     #set par(first-line-indent: 0em)  // 关键词部分不缩进
     #if is-chinese [
-      #text(size: 12pt, weight: "bold", font: fonts.song)[#keywords-label]
+      #text(size: 12pt, weight: "bold", font: fonts.song)[#keywords-label：]
     ] else [
-      #text(size: 12pt, weight: "bold")[#keywords-label]
+      #text(size: 12pt, weight: "bold")[#keywords-label: ]
     ]
-    #h(1em)
     #if is-chinese [
-      #text(size: 12pt, font: fonts.song)[#keywords.join("  ")]  // 中文关键词用空格分隔
+      #text(size: 12pt, font: fonts.song)[#keywords.join("；")]  // 中文关键词用分号分隔
     ] else [
-      #text(size: 12pt)[#keywords.join("  ")]  // 英文关键词用空格分隔
+      #text(size: 12pt)[#keywords.join("; ")]  // 英文关键词用分号分隔
     ]
     
     #pagebreak()
