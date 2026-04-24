@@ -100,7 +100,7 @@
   }
   
   show heading.where(level: 2): it => {
-    v(12pt, weak: true)
+    v(3pt)
     set par(first-line-indent: 0em)
     align(left)[
       #text(size: 14pt, weight: "bold", font: fonts.song)[
@@ -111,7 +111,7 @@
   }
 
   show heading.where(level: 3): it => {
-    v(12pt, weak: true)
+    v(3pt)
     set par(first-line-indent: 0em)
     align(left)[
       #text(size: 14pt, weight: "bold", font: fonts.song)[
