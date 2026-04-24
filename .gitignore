@@ -316,3 +316,7 @@ TSWLatexianTemp*
 #*Notes.bib
 
 works/
+
+assets/images/*.png
+assets/images/*.jpg
+assets/images/*.jpeg

@@ -89,9 +89,9 @@
     v(21pt, weak: true)
     set par(first-line-indent: 0em)
     align(center)[
-      #text(size: 16pt, weight: "bold", font: fonts.song)[
+      #text(size: 16pt, weight: "bold", font: fonts.main + fonts.song)[
         #if it.numbering != none {
-          [第#counter(heading).display()章#h(1em)]
+          [第 #counter(heading).display() 章 ]
         }
         #it.body
       ]
@@ -100,33 +100,33 @@
   }
   
   show heading.where(level: 2): it => {
-    v(12pt, weak: true)
+    v(3pt)
     set par(first-line-indent: 0em)
     align(left)[
-      #text(size: 14pt, weight: "bold", font: fonts.song)[
-        #counter(heading).display()#h(1em)#it.body
+      #text(size: 14pt, weight: "bold", font: fonts.main + fonts.song)[
+        #counter(heading).display() #it.body
       ]
     ]
     v(3pt)
   }
-  
+
   show heading.where(level: 3): it => {
-    v(12pt, weak: true)
+    v(3pt)
     set par(first-line-indent: 0em)
     align(left)[
-      #text(size: 14pt, weight: "bold", font: fonts.song)[
-        #counter(heading).display()#h(1em)#it.body
+      #text(size: 12pt, font: fonts.main + fonts.song)[
+        #counter(heading).display() #it.body
       ]
     ]
     v(3pt)
   }
-  
+
   show heading.where(level: 4): it => {
     v(6pt, weak: true)
     set par(first-line-indent: 0em)
     align(left)[
-      #text(size: 12pt, font: fonts.song)[
-        #counter(heading).display()#h(1em)#it.body
+      #text(size: 12pt, font: fonts.main + fonts.song)[
+        #counter(heading).display() #it.body
       ]
     ]
   }
@@ -178,7 +178,7 @@
     paper: "a4",
     margin: (top: 25mm, bottom: 38mm, left: 28mm, right: 18mm),
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.main + fonts.song)
       #let headings = query(heading.where(level: 1))
       #let current-page = here().page()
       #let relevant-headings = headings.filter(h => h.location().page() <= current-page)
@@ -194,7 +194,7 @@
       ]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )

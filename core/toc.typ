@@ -41,7 +41,7 @@
       #align(center)[目录]
       #line(length: 100%)
     ],
-    footer: context [#align(right)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
