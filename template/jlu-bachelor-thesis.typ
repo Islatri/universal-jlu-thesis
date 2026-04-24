@@ -26,6 +26,8 @@
   it
 }
 
+#show math.equation: set text(font: "Cambria Math")
+
 #let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric")
 
 #show: jlu-bachelor.with(
