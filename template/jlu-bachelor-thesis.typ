@@ -21,6 +21,11 @@
   doc
 )
 
+#show heading.where(level: 1): it => {
+  pagebreak()
+  it
+}
+
 #let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric")
 
 #show: jlu-bachelor.with(
