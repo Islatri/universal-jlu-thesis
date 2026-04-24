@@ -26,6 +26,12 @@
   it
 }
 
+// 设置图表编号为章序号格式 (2.1, 2.2, ...)
+#set figure(numbering: n => {
+  let ch = counter(heading.where(level: 1)).get().first()
+  [#ch.#n]
+})
+
 #show math.equation: set text(font: "Cambria Math")
 
 #let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric")
