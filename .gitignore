@@ -317,6 +317,8 @@ TSWLatexianTemp*
 
 works/
 
+# 除了logo.png以外的图片资源，否则cover部分会编译报错。
 assets/images/*.png
 assets/images/*.jpg
 assets/images/*.jpeg
+!assets/images/logo.png

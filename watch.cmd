@@ -1,1 +1,0 @@
-typst watch ./works/jlu-bachelor-thesis.typ --root ./
