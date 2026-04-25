@@ -86,6 +86,7 @@
   
   // 标题样式设置
   show heading.where(level: 1): it => {
+    counter(figure).update(0)
     v(21pt, weak: true)
     set par(first-line-indent: 0em)
     align(center)[
