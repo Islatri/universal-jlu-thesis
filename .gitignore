@@ -322,3 +322,5 @@ assets/images/*.png
 assets/images/*.jpg
 assets/images/*.jpeg
 !assets/images/logo.png
+
+.claude/
