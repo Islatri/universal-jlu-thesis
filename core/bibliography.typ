@@ -1,11 +1,8 @@
 #import "fonts.typ": *
 
-// 修改为接收 bibliography 对象而不是文件路径
-#let bibliography-page(bibliography) = {
-  // 参考文献另起页码
+#let bibliography-page(bib) = {
   pagebreak()
-  
-  // 设置参考文献页面的页面格式
+
   set page(
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: context [
@@ -16,28 +13,32 @@
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
-  
-  // 空2行（通过v函数实现）
+
   v(2em)
-  
-  // 参考文献标题：小3号黑体，居中
+
   align(center)[
     #text(size: 15pt, weight: "bold", font: fonts.hei)[
-      参#h(1em)考#h(1em)文#h(1em)献
+      参考文献
     ]
   ]
-  
+
   v(1em)
-  
-  // 设置参考文献内容格式
+
   set text(size: 12pt, font: fonts.song)
-  set par(leading: 6pt) // 18磅行距
-  
-  // 自定义参考文献编号格式
-  show cite: it => {
-    it
+  set par(leading: 6pt)
+
+  show cite: it => { it }
+
+  // 后处理 et-al：
+  // 英文作者名末尾是拉丁字母（姓名首字母缩写如 "R"、"Y M"），
+  // 中文作者名末尾是汉字。
+  // 用正则匹配 "拉丁字母 + 逗号 + 空格 + 等"，替换整体为 "字母 + 逗号 + 空格 + et al."
+  // 注意：Typst show regex 替换的是整个匹配串，所以要把字母也带进去
+  show regex("[A-Za-z],\s*等"): it => {
+    // it.text 形如 "R, 等" 或 "R,等"
+    // 取第一个字符（字母）+ ", et al."
+    it.text.first() + ", et al"
   }
-  
-  // 直接使用传入的 bibliography 对象
-  bibliography
+
+  bib
 }

@@ -27,9 +27,16 @@
 }
 
 #show math.equation: set text(font: "Cambria Math")
+#show math.equation: set block(above: 1.5em, below: 1.5em)
 
-#let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric")
+// 公式块函数：为公式添加统一的行距
+#let formula(body, number) = block(above: 1.5em, below: 1.5em, grid(
+  columns: (1fr, auto), gutter: 0pt,
+  align(center, body),
+  align(bottom, number),
+))
 
+#let bib = bibliography("refs.bib", style: "gbt-7714-2015-numeric.csl", title: none)
 #show: jlu-bachelor.with(
   thesis-info: (
     title-cn: "基于深度学习的二次元角色识别算法研究",

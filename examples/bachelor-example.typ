@@ -21,7 +21,7 @@
   doc
 )
 
-#let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric")
+#let bib = bibliography("refs.bib", style: "gb-7714-2015-numeric", title: none)
 
 #show: jlu-bachelor.with(
   thesis-info: (
