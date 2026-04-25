@@ -133,7 +133,17 @@
   }
   
   // 图表编号设置
-  figure-numbering-setup(style: figure-options.numbering-style)
+  // figure-numbering-setup(style: figure-options.numbering-style)
+  show heading.where(level: 1): it => {
+    counter(figure.where(kind: image)).update(0)
+    counter(figure.where(kind: table)).update(0)
+    it
+  }
+
+  set figure(numbering: n => {
+    let ch = counter(heading.where(level: 1)).get().first()
+    [#ch.#n]
+  })
   
   // 安全获取日期，提供默认值
   let thesis-date = thesis-info.at("date", default: auto)
