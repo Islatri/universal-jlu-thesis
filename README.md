@@ -61,13 +61,25 @@ node ./template.js // 生成模板文件的js脚本
 typst compile ./template/jlu-bachelor-thesis.typ --root ./
 ```
 
-#### 实时预览
+#### 实时预览与编辑
 
-使用以下命令进行实时预览（推荐搭配 VS Code + [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件）：
+使用以下命令进行Sample的实时预览（推荐搭配 VS Code + [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件）：
 
 ```bash
 typst watch ./template/jlu-bachelor-thesis.typ --root ./
 ```
+
+你也可以使用文件夹下提供的.cmd脚本进行编译和预览：
+```bash
+// 编译
+./compile.cmd 
+// 预览
+./preview.cmd
+```
+
+我们推荐你在项目根目录下创建一个 `works` 文件夹来存放你的论文文件，创建一个新文件夹 `works`，将 `template` 文件夹下的所有文件复制进去，并在其中编写你的论文内容。这样可以保持模板文件和你的论文内容的分离，方便管理和更新。
+
+此外还请注意，refs_sample.bib 中的示例文献条目包含了必要的字段（尤其是 language 字段），以确保参考文献能够正确生成 et al. 等格式。refs.bib 由于历史遗留问题不好替换，其中的文献条目是缺少必要字段的。
 
 你可以使用 Crtl+Shift+P 打开命令面板，输入 `Typst Preview` 来打开预览窗口。
 
@@ -114,17 +126,46 @@ universal-jlu-thesis/
 │   ├── figures.typ                # 图表样式
 │   ├── bibliography.typ           # 参考文献
 │   ├── commitment.typ             # 承诺书
+│   ├── authorization.typ          # 授权书
 │   └── utils.typ                  # 工具函数
-├── template/
-│   ├── jlu-bachelor-thesis.typ    # 本科毕设模板示例
+├── template/                      # 模板实例
+│   ├── jlu-bachelor-thesis.typ    # 本科毕设主文件
 │   ├── refs.bib                   # 参考文献数据库
-│   └── assets/                    # 资源文件
+│   ├── refs_sample.bib            # 参考文献格式示例
+│   ├── gbt-7714-2015-numeric.csl  # 参考文献 CSL 样式
+│   └── assets/                    # 模板资源文件
 ├── examples/                      # 示例文件
-├── docs/                          # 文档说明
-├── assets/                        # 模板资源
-├── lib.typ                        # 库文件
+│   ├── bachelor-example.typ       # 本科毕设完整示例
+│   ├── refs.bib                   # 示例参考文献
+│   └── assets/                    # 示例资源文件
+├── docs/                          # 文档与官方表格
+│   ├── 参考文献使用说明.md
+│   ├── 版权使用授权书说明.md
+│   ├── 吉林大学本科生毕业论文（设计）撰写要求与书写格式.doc
+│   ├── 附件Z-1：吉林大学本科毕业论文（设计）封面.doc
+│   ├── 附件Z-2：吉林大学本科毕业论文（设计）撰写要求与书写格式.doc
+│   ├── 附件Z-3：计院本科毕业论文（设计）撰写参考模板.doc
+│   └── 21届毕设表格材料/         # 必填与选填表格模板
+├── assets/                        # 项目共用资源
+│   ├── images/                    # 图片资源（如 logo.png）
+│   └── licenses/                  # 第三方许可证文件
+├── scripts/                       # 辅助脚本
+│   └── setup.sh
+├── tools/                         # 工具脚本
+│   ├── CalculateChineseCharacters.py
+│   ├── Calculate.cmd / Calculate.sh
+│   └── CalculateSample.cmd / CalculateSample.sh
+├── works/                         # 用户论文工作目录（推荐）
+│   └── assets/                    # 用户论文资源文件
+├── lib.typ                        # 库入口文件
 ├── template.js                    # 模板生成脚本
 ├── typst.toml                     # Typst 包配置
+├── justfile                       # 自动化任务配置
+├── compile.cmd                    # 编译脚本（Windows）
+├── watch.cmd                      # 实时预览脚本（Windows）
+├── thumbnail.png                  # 包缩略图
+├── CHANGELOG.md                   # 更新日志
+├── LICENSE                        # MIT 许可证
 └── README.md                      # 本文件
 ```
 
