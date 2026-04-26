@@ -37,6 +37,7 @@
 ))
 
 #let bib = bibliography("refs.bib", style: "gbt-7714-2015-numeric.csl", title: none)
+
 #show: jlu-bachelor.with(
   thesis-info: (
     title-cn: "基于深度学习的二次元角色识别算法研究",
