@@ -59,6 +59,7 @@
   // 1.5倍行距（规范要求）
   set par(
     leading: 1.5em,
+    spacing: 1.5em, 
     justify: true,
     first-line-indent: 2em
   )
@@ -210,7 +211,7 @@
     footer-descent: 18pt,
   )
   counter(page).update(1)
-  
+
   // 正文内容
   body
   
