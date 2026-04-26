@@ -174,7 +174,7 @@
     #v(44pt)
     
     // 校徽 - 缩小尺寸
-    #image("../assets/images/logo.png", width: 67.5%)
+    #image("../assets/logo.png", width: 67.5%)
     #v(18pt)
     
     // 标题
