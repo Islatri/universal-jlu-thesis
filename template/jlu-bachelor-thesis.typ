@@ -30,7 +30,7 @@
 #show math.equation: set block(above: 1.5em, below: 1.5em)
 
 #let formula(body, number) = {
-  block(above: 1.5em, below: 0.5em, grid(
+  block(above: 1.5em, below: 0.2em, grid(
     columns: (1fr, auto), gutter: 0pt,
     align(center, body),
     align(bottom, number),
