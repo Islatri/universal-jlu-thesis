@@ -1,0 +1,1 @@
+typst compile ./work/jlu-bachelor-thesis.typ --root ./
