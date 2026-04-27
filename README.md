@@ -3,14 +3,14 @@
 [![Typst Package](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FIslatri%2Funiversal-jlu-thesis%2Frefs%2Fheads%2Fmain%2Ftypst.toml&query=%24.package.version&prefix=v&logo=typst&label=package&color=239dae)](https://typst.app/universe/package/universal-jlu-thesis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-一个优雅、易用的吉林大学毕业设计论文 Typst 模板，完全遵循学校的官方格式要求。 | A elegant and easy-to-use Typst template for Jilin University (a university in China) bachelor's thesis, fully compliant with the official formatting requirements.
+一个优雅、易用的吉林大学毕业设计论文 Typst 模板，遵循学校的官方格式要求。 | A elegant and easy-to-use Typst template for Jilin University (a university in China) bachelor's thesis, fully compliant with the official formatting requirements.
 
 ![jlu-dev-cover.png](https://s3.bmp.ovh/2026/04/23/q4ufIinO.png)
 
 > **警告：本模板为民间开源项目**，非官方出品，使用前请了解：
 >
-> - 模板可能不被学校官方完全认可
-> - 正式提交时请提前验证格式是否符合要求
+> - 模板可能不被学校认可
+> - 正式提交时，请务必**提前验证格式是否符合要求**
 > - 建议保持源文件备份，以便随时转换至 Word 或 LaTeX
 
 ## 关于本项目
@@ -61,13 +61,25 @@ node ./template.js // 生成模板文件的js脚本
 typst compile ./template/jlu-bachelor-thesis.typ --root ./
 ```
 
-#### 实时预览
+#### 实时预览与编辑
 
-使用以下命令进行实时预览（推荐搭配 VS Code + [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件）：
+使用以下命令进行Sample的实时预览（推荐搭配 VS Code + [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件）：
 
 ```bash
 typst watch ./template/jlu-bachelor-thesis.typ --root ./
 ```
+
+你也可以使用文件夹下提供的.cmd脚本进行编译和预览：
+```bash
+// 编译
+./compile.cmd 
+// 预览
+./preview.cmd
+```
+
+我们推荐你在项目根目录下创建一个 `works` 文件夹来存放你的论文文件，将 `template` 文件夹下的所有文件复制进去，并在其中编写你的论文内容。这样可以保持模板文件和你的论文内容的分离，方便管理和更新。
+
+此外还请注意，refs_sample.bib 中的示例文献条目包含了必要的字段（尤其是 language 字段），以确保参考文献能够正确生成 et al. 等格式。refs.bib 由于历史遗留问题不好替换，其中的文献条目是缺少必要字段的。
 
 你可以使用 Crtl+Shift+P 打开命令面板，输入 `Typst Preview` 来打开预览窗口。
 
@@ -99,6 +111,18 @@ Web App 默认不提供中文字体，建议手动上传以下字体文件以获
 
 **Tip:** 推荐使用 VS Code 配合 Tinymist Typst 插件进行编辑，可获得语法高亮、实时预览、代码补全等功能。
 
+## 关于Tools
+`tools` 目录下包含了一个 Python 脚本 `CalculateChineseCharacters.py`，用于统计论文中中文字符的数量。你可以通过以下命令运行该脚本：
+
+```bash
+./tools/Calculate.cmd
+
+// 或者在 Linux/macOS 上
+./tools/Calculate.sh
+```
+
+通常来说，毕业论文的中文字符要求为 20000 字以上（不包括空格和标点符号）。你可以使用这个工具来检查你的论文是否满足这一要求。
+
 ## 文件结构
 
 ```bash
@@ -114,17 +138,46 @@ universal-jlu-thesis/
 │   ├── figures.typ                # 图表样式
 │   ├── bibliography.typ           # 参考文献
 │   ├── commitment.typ             # 承诺书
+│   ├── authorization.typ          # 授权书
 │   └── utils.typ                  # 工具函数
-├── template/
-│   ├── jlu-bachelor-thesis.typ    # 本科毕设模板示例
+├── template/                      # 模板实例
+│   ├── jlu-bachelor-thesis.typ    # 本科毕设主文件
 │   ├── refs.bib                   # 参考文献数据库
-│   └── assets/                    # 资源文件
+│   ├── refs_sample.bib            # 参考文献格式示例
+│   ├── gbt-7714-2015-numeric.csl  # 参考文献 CSL 样式
+│   └── assets/                    # 模板资源文件
 ├── examples/                      # 示例文件
-├── docs/                          # 文档说明
-├── assets/                        # 模板资源
-├── lib.typ                        # 库文件
+│   ├── bachelor-example.typ       # 本科毕设完整示例
+│   ├── refs.bib                   # 示例参考文献
+│   └── assets/                    # 示例资源文件
+├── docs/                          # 文档与官方表格
+│   ├── 参考文献使用说明.md
+│   ├── 版权使用授权书说明.md
+│   ├── 吉林大学本科生毕业论文（设计）撰写要求与书写格式.doc
+│   ├── 附件Z-1：吉林大学本科毕业论文（设计）封面.doc
+│   ├── 附件Z-2：吉林大学本科毕业论文（设计）撰写要求与书写格式.doc
+│   ├── 附件Z-3：计院本科毕业论文（设计）撰写参考模板.doc
+│   └── 21届毕设表格材料/         # 必填与选填表格模板
+├── assets/                        # 项目共用资源
+│   ├── images/                    # 图片资源（如 logo.png）
+│   └── licenses/                  # 第三方许可证文件
+├── scripts/                       # 辅助脚本
+│   └── setup.sh
+├── tools/                         # 工具脚本
+│   ├── CalculateChineseCharacters.py
+│   ├── Calculate.cmd / Calculate.sh
+│   └── CalculateSample.cmd / CalculateSample.sh
+├── works/                         # 用户论文工作目录（推荐）
+│   └── assets/                    # 用户论文资源文件
+├── lib.typ                        # 库入口文件
 ├── template.js                    # 模板生成脚本
 ├── typst.toml                     # Typst 包配置
+├── justfile                       # 自动化任务配置
+├── compile.cmd                    # 编译脚本（Windows）
+├── watch.cmd                      # 实时预览脚本（Windows）
+├── thumbnail.png                  # 包缩略图
+├── CHANGELOG.md                   # 更新日志
+├── LICENSE                        # MIT 许可证
 └── README.md                      # 本文件
 ```
 
@@ -186,36 +239,36 @@ universal-jlu-thesis/
 
 | 论文部分      | 字号    | 字体            | pt 值  | 其他格式要求                |
 | ------------- | ------- | --------------- | ------ | --------------------------- |
-| 目录标题      | 3 号    | 黑体            | 16pt   | 居中                        |
-| 目录内容      | 4 号    | 宋体            | 14pt   | 行距 18 磅                  |
-| 中文摘要标题  | 4 号    | 黑体            | 14pt   | 居中                        |
-| 中文摘要内容  | 小 4 号 | 宋体            | 12pt   | 1.5 倍行距                  |
-| 关键词        | 小 4 号 | 宋体            | 12pt   |                             |
-| 外文摘要标题  | 4 号    | Times New Roman | 14pt   | 居中                        |
-| 外文摘要内容  | 小 4 号 | Times New Roman | 12pt   | 1.5 倍行距                  |
-| Keywords      | 小 4 号 | Times New Roman | 12pt   |                             |
-| 正文章标题    | 小 3 号 | 黑体            | 15pt   | 加粗，居中，段前段后 0.5 行 |
-| 正文节标题    | 小 4 号 | 黑体            | 12pt   | 加粗，居中，段前段后 0.5 行 |
-| 正文 2 级标题 | 4 号    | 黑体            | 14pt   | 加粗                        |
-| 正文 3 级标题 | 小 4 号 | 黑体            | 12pt   | 不加粗                      |
-| 正文内容      | 小 4 号 | 宋体            | 12pt   |                             |
-| 结论标题      | 小 3 号 | 黑体            | 15pt   | 居中                        |
-| 结论内容      | 小 4 号 | 宋体            | 12pt   | 1.5 倍行距                  |
-| 致谢标题      | 小 3 号 | 黑体            | 15pt   | 居中                        |
-| 致谢内容      | 小 4 号 | 宋体            | 12pt   | 1.5 倍行距                  |
-| 参考文献标题  | 小 3 号 | 黑体            | 15pt   | 居中                        |
-| 参考文献内容  | 小 4 号 | 宋体            | 12pt   | 行距 18 磅                  |
-| 图表          | 5 号    | 宋体            | 10.5pt |                             |
+| 目录标题      | 三号    | 黑体            | 16pt   | 居中                        |
+| 目录内容      | 四号    | 宋体            | 14pt   | 行距 18 磅                  |
+| 中文摘要标题  | 三号    | 黑体            | 16pt   | 居中                        |
+| 中文摘要内容  | 小四号 | 宋体            | 12pt   | 1.5 倍行距                  |
+| 关键词        | 小四号 | 宋体            | 12pt   |                             |
+| 外文摘要标题  | 三号    | Times New Roman | 16pt   | 居中                        |
+| 外文摘要内容  | 小四号 | Times New Roman | 12pt   | 1.5 倍行距                  |
+| Keywords      | 小四号 | Times New Roman | 12pt   |                             |
+| 正文章标题    | 三号    | 宋体            | 16pt   | 加粗，居中                  |
+| 正文节标题    | 四号    | 宋体            | 14pt   | 加粗，居左                  |
+| 正文 2 级标题  | 四号    | 宋体            | 14pt   | 加粗                        |
+| 正文 3 级标题  | 小四号 | 宋体            | 12pt   | 不加粗                      |
+| 正文内容      | 小四号 | 宋体            | 12pt   |                             |
+| 结论标题      | 三号    | 宋体            | 16pt   | 居中                        |
+| 结论内容      | 小四号 | 宋体            | 12pt   | 1.5 倍行距                  |
+| 致谢标题      | 三号    | 宋体            | 16pt   | 居中                        |
+| 致谢内容      | 小四号 | 宋体            | 12pt   | 1.5 倍行距                  |
+| 参考文献标题  | 小三号 | 黑体            | 15pt   | 居中                        |
+| 参考文献内容  | 小四号 | 宋体            | 12pt   | 行距 18 磅                  |
+| 图表          | 五号    | 宋体            | 10.5pt |                             |
 
 ### 表格二：各个字号所用于的部分
 
-| 字号    | pt 值  | 使用部分                                                                                                            | 字体要求                  | 格式要求                                |
-| ------- | ------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------- |
-| 3 号    | 16pt   | 目录标题                                                                                                            | 黑体                      | 居中                                    |
-| 小 3 号 | 15pt   | 正文章标题、结论标题、致谢标题、参考文献标题                                                                        | 黑体                      | 居中，章标题需加粗并设置段前段后 0.5 行 |
-| 4 号    | 14pt   | 目录内容、中文摘要标题、外文摘要标题、正文 2 级标题                                                                 | 宋体/黑体/Times New Roman | 根据具体部分要求                        |
-| 小 4 号 | 12pt   | 中文摘要内容、关键词、外文摘要内容、Keywords、正文节标题、正文 3 级标题、正文内容、结论内容、致谢内容、参考文献内容 | 宋体/黑体/Times New Roman | 根据具体部分要求                        |
-| 5 号    | 10.5pt | 图表                                                                                                                | 宋体                      |                                         |
+| 字号   | pt 值  | 使用部分                                                                                                                      | 字体要求                  | 格式要求                                |
+| ------ | ------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------- |
+| 三号   | 16pt   | 目录标题、中文摘要标题、外文摘要标题、正文章标题、结论标题、致谢标题                                                          | 黑体/宋体/Times New Roman | 根据具体部分要求                        |
+| 小三号 | 15pt   | 参考文献标题                                                                                                                  | 黑体                      | 居中                                    |
+| 四号   | 14pt   | 目录内容、正文节标题、正文 2 级标题                                                                                            | 宋体                      | 根据具体部分要求                        |
+| 小四号 | 12pt   | 中文摘要内容、关键词、外文摘要内容、Keywords、正文 3 级标题、正文内容、结论内容、致谢内容、参考文献内容                       | 宋体/Times New Roman      | 根据具体部分要求                        |
+| 五号   | 10.5pt | 图表                                                                                                                          | 宋体                      |                                         |
 
 这两个表格可以帮助您快速查找每个部分应该使用的字号，以及每个字号都用在哪些部分，方便您在撰写毕业论文时进行格式设置。
 
