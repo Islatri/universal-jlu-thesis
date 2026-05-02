@@ -9,6 +9,7 @@
 #import "figures.typ": *
 #import "bibliography.typ": *
 #import "utils.typ": *
+#import "@preview/cuti:0.4.0": show-cn-fakebold, show-fakebold
 
 // 主模板函数
 #let jlu-thesis(
@@ -68,20 +69,42 @@
   set list(indent: 2em)
   set enum(indent: 2em)
   
+  // 图表标题与正文间距统一为1.5em
+  set figure(gap: 1.5em)
+
   // 强制列表和图表后的段落恢复首行缩进
   show list: it => {
     it
-    par[#box()]
+    par(leading: 0em, spacing: 0em, first-line-indent: 0em)[#box()]
   }
   show enum: it => {
     it
-    par[#box()]
+    par(leading: 0em, spacing: 0em, first-line-indent: 0em)[#box()]
   }
+  // 图表样式：表标题在上方，图标题在下方
+  show figure.where(kind: table): set figure.caption(position: top)
+  show figure.where(kind: table): set figure(gap: 1em)
   show figure: it => {
-    it
-    par[#box()]
+    set par(spacing: 0em)
+    block(above: 18pt, below: 0pt, it)
+    par(leading: 0em, spacing: 0em, first-line-indent: 0em)[#box()]
   }
-  
+
+  // 表格内部的段落间距恢复为1.5em
+  show table: set par(spacing: 1.5em)
+
+  // 中英文加粗伪粗体
+  show: show-cn-fakebold
+  show: doc => show-fakebold(
+    reg-exp: "[^p{script=Han}！-･〇-〰—]+",
+    weight: "regular",
+    doc
+  )
+
+  // 数学公式样式
+  show math.equation: set text(font: "Cambria Math")
+  show math.equation: set block(above: 1.5em, below: 1.5em)
+
   // 设置标题编号
   set heading(numbering: "1.1.1.1")
   
@@ -191,6 +214,7 @@
     margin: (top: 25mm, bottom: 38mm, left: 28mm, right: 18mm),
     header: context [
       #set text(size: 9pt, font: fonts.main + fonts.song)
+      #set par(spacing: 0.5em)
       #let headings = query(heading.where(level: 1))
       #let current-page = here().page()
       #let relevant-headings = headings.filter(h => h.location().page() <= current-page)
@@ -204,7 +228,7 @@
           ]
         ]
       ]
-      #line(length: 100%)
+      #line(length: 100%, stroke: rgb("#f6f6f6"))
     ],
     footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
     header-ascent: 7mm,

@@ -2,6 +2,7 @@
 // 吉林大学学位论文模板
 
 #import "core/template.typ": jlu-thesis
+#import "core/utils.typ": formula
 
 // 导出主模板函数
 #let jlu-bachelor = jlu-thesis
