@@ -24,7 +24,7 @@
 
   v(1em)
 
-  set text(size: 12pt, font: fonts.song)
+  set text(size: 12pt, font: ("Times New Roman",) + fonts.song)
   set par(leading: 6pt)
 
   show cite: it => { it }

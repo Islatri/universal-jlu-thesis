@@ -1,3 +1,13 @@
+// 带编号的公式
+#let formula(body, number) = {
+  block(above: 1.5em, below: 0.2em, grid(
+    columns: (1fr, auto), gutter: 0pt,
+    align(center, body),
+    align(bottom, number),
+  ))
+  par[#box()]
+}
+
 // 清除到偶数页
 #let clear-double-page() = {
   pagebreak(to: "odd")
