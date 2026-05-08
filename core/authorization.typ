@@ -6,101 +6,91 @@
   confidential: false,
   author-signature-img: none,
   mentor-signature-img: none,
-  date: auto
+  signature-height: 2.5em,
+  date: auto,
 ) = {
+  let final-date = if date == auto { datetime.today() } else { date }
+  let display-date = final-date.display("[year]年[month]月[day]日")
+
   page[
+    #set text(font: ("Times New Roman", "FangSong"), size: 12pt, lang: "zh", region: "cn")
     #set par(leading: 1.5em, first-line-indent: 2em)
-    
+
+    #v(3cm)
+
     // 标题
     #align(center)[
-      #text(size: 18pt, weight: "bold", font: fonts.hei)[#title]
+      #text(size: 18pt, font: fonts.fang)[#title]
     ]
-    
+
     #v(1cm)
-    
+
     // 正文
-    #text(size: 14pt, font: fonts.song)[#content]
-    
-    #v(0.8cm)
-    
+    #text(size: 14pt, font: fonts.fang)[#content]
+
+    #v(0.25cm)
+
     // 保密选项
     #align(left)[
+      #set par(first-line-indent: 0em)
       #text(size: 14pt, font: fonts.fang)[
-        保密 □, 在 #h(1em) 年解密后连用本授权书。
+        #h(8em)#text(weight: "bold")[保密]□, 在#box(width: 2em, stroke: (bottom: 0.5pt))[]年解密后适用本授权书。
       ]
     ]
-    
-    #v(0.3cm)
-    
+
+    #align(left)[
+      #set par(first-line-indent: 0em)
+      #text(size: 14pt, font: fonts.fang)[
+        本论文属于
+      ]
+    ]
+
     #align(left)[
       #text(size: 14pt, font: fonts.fang)[
-        不保密 □.
+        #h(6em)#text(weight: "bold")[不保密]#text(font: ("Segoe UI Symbol", "Times New Roman"))[☑]。
       ]
     ]
-    
+
+    #align(left)[
+      #set par(first-line-indent: 0em)
+      #text(size: 14pt, font: fonts.fang)[
+        （请在以上方框内打"√"）
+      ]
+    ]
+
     #v(1.5cm)
-    
+
     // 签名区域
     #grid(
       columns: (1fr, 1fr),
-      column-gutter: 3em,
-      
+      column-gutter: 0.5em,
+
       // 左列：作者签名
       [
-        #align(center)[
-          #text(size: 12pt, font: fonts.fang)[作者签名：]
-        ]
-        #v(1.5cm)
-        #if author-signature-img != none [
-          #align(center)[
-            #image(author-signature-img, width: 4cm)
-          ]
-        ] else [
-          #align(center)[
-            #line(length: 4cm)
-          ]
-        ]
-        
-        #v(0.3cm)
-        
-        #align(center)[
-          #text(size: 12pt, font: fonts.fang)[
-            #if date == auto [
-              日期：#underline(h(1.2em))年 #underline(h(1.2em))月 #underline(h(1.2em))日
-            ] else [
-              日期：#date
-            ]
-          ]
-        ]
+        #set par(first-line-indent: 0em)
+        #grid(
+          columns: (auto, auto, auto),
+          align: horizon,
+          text(size: 14pt, font: fonts.fang)[作者签名：],
+          if author-signature-img != none { image(author-signature-img, height: signature-height) } else { h(6em) },
+          h(0em),
+        )
+        #v(1cm)
+        #text(size: 14pt, font: fonts.fang)[日期：#display-date]
       ],
-      
+
       // 右列：指导教师签名
       [
-        #align(center)[
-          #text(size: 12pt, font: fonts.fang)[指导教师签名：]
-        ]
-        #v(1.5cm)
-        #if mentor-signature-img != none [
-          #align(center)[
-            #image(mentor-signature-img, width: 4cm)
-          ]
-        ] else [
-          #align(center)[
-            #line(length: 4cm)
-          ]
-        ]
-        
-        #v(0.3cm)
-        
-        #align(center)[
-          #text(size: 12pt, font: fonts.fang)[
-            #if date == auto [
-              日期：#underline(h(1.2em))年 #underline(h(1.2em))月 #underline(h(1.2em))日
-            ] else [
-              日期：#date
-            ]
-          ]
-        ]
+        #set par(first-line-indent: 0em)
+        #grid(
+          columns: (auto, auto, auto),
+          align: horizon,
+          text(size: 14pt, font: fonts.fang)[指导教师签名：],
+          if mentor-signature-img != none { image(mentor-signature-img, height: signature-height) } else { h(6em) },
+          h(0em),
+        )
+        #v(1cm)
+        #text(size: 14pt, font: fonts.fang)[日期：#display-date]
       ]
     )
   ]

@@ -38,7 +38,7 @@
   
   // 仿宋系列
   fang: (
-    "FangSong",         // 仿宋
+    "FangSong",         // 仿宋 (GB2312)
     "STFangsong",       // 华文仿宋
     "Microsoft YaHei"
   )

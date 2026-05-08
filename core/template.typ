@@ -45,8 +45,13 @@
   authorization-confidential: false,
   authorization-author-sig: none,
   authorization-mentor-sig: none,
+  authorization-signature-height: 2.5em,
   authorization-date: auto,
-  
+
+  // 承诺书参数
+  commitment-signature-img: none,
+  commitment-signature-height: 2.5em,
+
   body
 ) = {
   // 全局字体设置
@@ -189,13 +194,14 @@
   )
   
   // 承诺书
-  commitment-page()
+  commitment-page(signature-img: commitment-signature-img, signature-height: commitment-signature-height)
   
   // 版权使用授权书
   authorization-page(
     confidential: authorization-confidential,
     author-signature-img: authorization-author-sig,
     mentor-signature-img: authorization-mentor-sig,
+    signature-height: authorization-signature-height,
     date: authorization-date
   )
   
