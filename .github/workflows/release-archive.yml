@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - v*
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (without v prefix)'
+        required: true
 
 env:
   PKG_NAME: universal-jlu-thesis
@@ -22,7 +27,11 @@ jobs:
       - name: Get version from tag
         id: get_version
         run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION=${GITHUB_REF#refs/tags/v}
+          fi
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "Version: ${VERSION}"
 
@@ -123,53 +132,24 @@ jobs:
           cat release_notes.md
 
       - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: ${{ env.PKG_NAME }} ${{ github.ref_name }}
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: ${{ env.PKG_NAME }} v${{ steps.get_version.outputs.version }}
           body_path: release_notes.md
-          draft: false
-          prerelease: false
-
-      - name: Upload tar.gz asset
-        uses: actions/upload-release-asset@v1
+          files: |
+            ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
+            ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
+            SHA256SUMS.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
-          asset_name: ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz
-          asset_content_type: application/gzip
-
-      - name: Upload zip asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
-          asset_name: ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip
-          asset_content_type: application/zip
-
-      - name: Upload SHA256SUMS
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./SHA256SUMS.txt
-          asset_name: SHA256SUMS.txt
-          asset_content_type: text/plain
 
       - name: Summary
         run: |
           echo "✅ Release created successfully!"
           echo ""
           echo "📦 Package: ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}"
-          echo "🏷️  Tag: ${{ github.ref_name }}"
+          echo "🏷️  Tag: v${{ steps.get_version.outputs.version }}"
           echo "📁 Files:"
           echo "   - ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.tar.gz"
           echo "   - ${{ env.PKG_NAME }}-${{ steps.get_version.outputs.version }}.zip"
