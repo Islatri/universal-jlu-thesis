@@ -71,15 +71,17 @@ typst watch ./template/jlu-bachelor-thesis.typ --root ./
 
 你也可以使用文件夹下提供的.cmd脚本进行编译和预览：
 ```bash
-// 编译
-./compile.cmd 
-// 预览
-./preview.cmd
+// 编译模板
+./compile-template.cmd 
+// 编译works
+./compile.cmd
+// 预览模板
+./watch-template.cmd
+// 预览works
+./watch.cmd
 ```
 
 我们推荐你在项目根目录下创建一个 `works` 文件夹来存放你的论文文件，将 `template` 文件夹下的所有文件复制进去，并在其中编写你的论文内容。这样可以保持模板文件和你的论文内容的分离，方便管理和更新。
-
-此外还请注意，refs_sample.bib 中的示例文献条目包含了必要的字段（尤其是 language 字段），以确保参考文献能够正确生成 et al. 等格式。refs.bib 由于历史遗留问题不好替换，其中的文献条目是缺少必要字段的。
 
 你可以使用 Crtl+Shift+P 打开命令面板，输入 `Typst Preview` 来打开预览窗口。
 
@@ -143,13 +145,8 @@ universal-jlu-thesis/
 ├── template/                      # 模板实例
 │   ├── jlu-bachelor-thesis.typ    # 本科毕设主文件
 │   ├── refs.bib                   # 参考文献数据库
-│   ├── refs_sample.bib            # 参考文献格式示例
 │   ├── gbt-7714-2015-numeric.csl  # 参考文献 CSL 样式
 │   └── assets/                    # 模板资源文件
-├── examples/                      # 示例文件
-│   ├── bachelor-example.typ       # 本科毕设完整示例
-│   ├── refs.bib                   # 示例参考文献
-│   └── assets/                    # 示例资源文件
 ├── docs/                          # 文档与官方表格
 │   ├── 参考文献使用说明.md
 │   ├── 版权使用授权书说明.md
@@ -167,8 +164,6 @@ universal-jlu-thesis/
 │   ├── CalculateChineseCharacters.py
 │   ├── Calculate.cmd / Calculate.sh
 │   └── CalculateSample.cmd / CalculateSample.sh
-├── works/                         # 用户论文工作目录（推荐）
-│   └── assets/                    # 用户论文资源文件
 ├── lib.typ                        # 库入口文件
 ├── template.js                    # 模板生成脚本
 ├── typst.toml                     # Typst 包配置
@@ -286,8 +281,6 @@ universal-jlu-thesis/
 - 某些特殊类型的参考文献（如学位论文）可能存在格式问题
 - Web 版本中可能无法完美支持所有 BibTeX 字段
 
-2026 年 4 月 23 日更新：参考文献的格式请参照 refs_sample.bib 中的示例，确保每条文献都包含必要的字段（主要是 language 字段），否则无法自动截取文献作者，生成 et al.等格式。
-
 ### 系统兼容性
 
 - 目前主要针对 Windows 系统下的中文字体进行了适配
@@ -340,7 +333,7 @@ universal-jlu-thesis/
 - 📖 [Typst 官方文档](https://typst.app/docs)
 - 📚 [Typst Universe 包列表](https://typst.app/universe)
 - 🏫 [吉林大学官方网站](https://www.jlu.edu.cn)
-- � [论文格式要求参考](https://github.com/Islatri/universal-jlu-thesis/tree/961b9bff36ea0c1d53f38a58c1f92fb0f418e0bf/docs)
+- 📄 [论文格式要求参考](https://github.com/Islatri/universal-jlu-thesis/tree/main/docs)
 - 💬 [GitHub 讨论区](https://github.com/Islatri/universal-jlu-thesis/discussions)
 
 ## 许可证
