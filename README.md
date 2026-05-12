@@ -19,15 +19,6 @@
 
 **universal-jlu-thesis** 是一套基于 Typst 的吉林大学毕业设计论文模板，遵循学校官方的格式要求，参考了 [universal-hit-thesis](https://github.com/hitszosa/universal-hit-thesis) 的设计思路，目前支持本科毕业设计论文格式。
 
-## 特点
-
-- ✨ **符合吉大格式要求** - 严格按照官方文档实现字号、字体、行距等格式
-- 🚀 **开箱即用** - 无需复杂配置，克隆即可开始写论文
-- 📦 **模块化设计** - 清晰的目录结构，易于维护和扩展
-- 🎨 **美观的排版** - 专业的论文排版效果
-- 📚 **拓展性好** - 除了支持本科毕业设计，如果有需要，未来将考虑支持硕士、博士等其他学位的论文格式
-- 🔄 **持续维护** - 积极响应社区反馈和需求更新
-
 ## 快速开始
 
 ### 使用方式 Ⅰ：本地编辑（推荐）
@@ -52,16 +43,17 @@ cd universal-jlu-thesis
 typst compile jlu-bachelor-thesis.typ
 ```
 
+由于Typst官方感人的审核速度，我们建议你使用下面的方法。
+
 #### 方法 B：克隆仓库（开发者推荐）
 
 ```bash
 git clone https://github.com/Islatri/universal-jlu-thesis.git
 cd universal-jlu-thesis
-node ./template.js // 生成模板文件的js脚本
 typst compile ./template/jlu-bachelor-thesis.typ --root ./
 ```
 
-#### 实时预览与编辑
+#### 实时预览与编辑（开发者推荐）
 
 使用以下命令进行Sample的实时预览（推荐搭配 VS Code + [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件）：
 
@@ -70,20 +62,21 @@ typst watch ./template/jlu-bachelor-thesis.typ --root ./
 ```
 
 你也可以使用文件夹下提供的.cmd脚本进行编译和预览：
+
 ```bash
-// 编译
-./compile.cmd 
-// 预览
-./preview.cmd
+// 编译works
+./compile.cmd
+// 预览works
+./watch.cmd
 ```
 
 我们推荐你在项目根目录下创建一个 `works` 文件夹来存放你的论文文件，将 `template` 文件夹下的所有文件复制进去，并在其中编写你的论文内容。这样可以保持模板文件和你的论文内容的分离，方便管理和更新。
 
-此外还请注意，refs_sample.bib 中的示例文献条目包含了必要的字段（尤其是 language 字段），以确保参考文献能够正确生成 et al. 等格式。refs.bib 由于历史遗留问题不好替换，其中的文献条目是缺少必要字段的。
-
 你可以使用 Crtl+Shift+P 打开命令面板，输入 `Typst Preview` 来打开预览窗口。
 
 ### 使用方式 Ⅱ：在线编辑
+
+相似的，由于Typst官方感人的审核速度，我们建议你使用上面的方法。
 
 本模板已上传至 Typst Universe，你可以直接在 Typst Web App 中使用：
 
@@ -143,13 +136,8 @@ universal-jlu-thesis/
 ├── template/                      # 模板实例
 │   ├── jlu-bachelor-thesis.typ    # 本科毕设主文件
 │   ├── refs.bib                   # 参考文献数据库
-│   ├── refs_sample.bib            # 参考文献格式示例
 │   ├── gbt-7714-2015-numeric.csl  # 参考文献 CSL 样式
 │   └── assets/                    # 模板资源文件
-├── examples/                      # 示例文件
-│   ├── bachelor-example.typ       # 本科毕设完整示例
-│   ├── refs.bib                   # 示例参考文献
-│   └── assets/                    # 示例资源文件
 ├── docs/                          # 文档与官方表格
 │   ├── 参考文献使用说明.md
 │   ├── 版权使用授权书说明.md
@@ -167,8 +155,6 @@ universal-jlu-thesis/
 │   ├── CalculateChineseCharacters.py
 │   ├── Calculate.cmd / Calculate.sh
 │   └── CalculateSample.cmd / CalculateSample.sh
-├── works/                         # 用户论文工作目录（推荐）
-│   └── assets/                    # 用户论文资源文件
 ├── lib.typ                        # 库入口文件
 ├── template.js                    # 模板生成脚本
 ├── typst.toml                     # Typst 包配置
@@ -198,11 +184,6 @@ universal-jlu-thesis/
 - ✓ 图表编号和引用
 - ✓ 页脚页码设置
 - ✓ 多级标题样式
-
-### 计划中的功能
-
-- ✗ 更多学位类型支持
-- ✗ 更多更新的官方论文格式要求文档
 
 ## 依赖
 
@@ -249,9 +230,8 @@ universal-jlu-thesis/
 | Keywords      | 小四号 | Times New Roman | 12pt   |                             |
 | 正文章标题    | 三号    | 宋体            | 16pt   | 加粗，居中                  |
 | 正文节标题    | 四号    | 宋体            | 14pt   | 加粗，居左                  |
-| 正文 2 级标题  | 四号    | 宋体            | 14pt   | 加粗                        |
-| 正文 3 级标题  | 小四号 | 宋体            | 12pt   | 不加粗                      |
-| 正文内容      | 小四号 | 宋体            | 12pt   |                             |
+| 正文条标题    | 小四号 | 宋体            | 12pt   | 不加粗                      |
+| 正文内容      | 小四号 | 宋体            | 12pt   | 1.5 倍行距                  |
 | 结论标题      | 三号    | 宋体            | 16pt   | 居中                        |
 | 结论内容      | 小四号 | 宋体            | 12pt   | 1.5 倍行距                  |
 | 致谢标题      | 三号    | 宋体            | 16pt   | 居中                        |
@@ -266,8 +246,8 @@ universal-jlu-thesis/
 | ------ | ------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------- |
 | 三号   | 16pt   | 目录标题、中文摘要标题、外文摘要标题、正文章标题、结论标题、致谢标题                                                          | 黑体/宋体/Times New Roman | 根据具体部分要求                        |
 | 小三号 | 15pt   | 参考文献标题                                                                                                                  | 黑体                      | 居中                                    |
-| 四号   | 14pt   | 目录内容、正文节标题、正文 2 级标题                                                                                            | 宋体                      | 根据具体部分要求                        |
-| 小四号 | 12pt   | 中文摘要内容、关键词、外文摘要内容、Keywords、正文 3 级标题、正文内容、结论内容、致谢内容、参考文献内容                       | 宋体/Times New Roman      | 根据具体部分要求                        |
+| 四号   | 14pt   | 目录内容、正文节标题                                                                                                          | 宋体                      | 根据具体部分要求                        |
+| 小四号 | 12pt   | 中文摘要内容、关键词、外文摘要内容、Keywords、正文条标题、正文内容、结论内容、致谢内容、参考文献内容                         | 宋体/Times New Roman      | 根据具体部分要求                        |
 | 五号   | 10.5pt | 图表                                                                                                                          | 宋体                      |                                         |
 
 这两个表格可以帮助您快速查找每个部分应该使用的字号，以及每个字号都用在哪些部分，方便您在撰写毕业论文时进行格式设置。
@@ -285,8 +265,6 @@ universal-jlu-thesis/
 - 当前参考文献格式基于 GB/T 7714-2015 标准实现
 - 某些特殊类型的参考文献（如学位论文）可能存在格式问题
 - Web 版本中可能无法完美支持所有 BibTeX 字段
-
-2026 年 4 月 23 日更新：参考文献的格式请参照 refs_sample.bib 中的示例，确保每条文献都包含必要的字段（主要是 language 字段），否则无法自动截取文献作者，生成 et al.等格式。
 
 ### 系统兼容性
 
@@ -340,7 +318,7 @@ universal-jlu-thesis/
 - 📖 [Typst 官方文档](https://typst.app/docs)
 - 📚 [Typst Universe 包列表](https://typst.app/universe)
 - 🏫 [吉林大学官方网站](https://www.jlu.edu.cn)
-- � [论文格式要求参考](https://github.com/Islatri/universal-jlu-thesis/tree/961b9bff36ea0c1d53f38a58c1f92fb0f418e0bf/docs)
+- 📄 [论文格式要求参考](https://github.com/Islatri/universal-jlu-thesis/tree/main/docs)
 - 💬 [GitHub 讨论区](https://github.com/Islatri/universal-jlu-thesis/discussions)
 
 ## 许可证

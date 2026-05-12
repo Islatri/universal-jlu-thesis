@@ -1,1 +1,0 @@
-python CalculateChineseCharacters.py ../template/jlu-bachelor-thesis.typ
