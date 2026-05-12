@@ -50,7 +50,6 @@ typst compile jlu-bachelor-thesis.typ
 ```bash
 git clone https://github.com/Islatri/universal-jlu-thesis.git
 cd universal-jlu-thesis
-node ./template.js // 生成模板文件的js脚本
 typst compile ./template/jlu-bachelor-thesis.typ --root ./
 ```
 
