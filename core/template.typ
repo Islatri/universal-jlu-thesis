@@ -206,6 +206,7 @@
   )
   
   // 中文摘要
+  counter(page).update(1)
   chinese-abstract(abstract-cn, keywords-cn)
   
   // 英文摘要
@@ -217,9 +218,9 @@
   // 正文开始
   set page(
     paper: "a4",
-    margin: (top: 25mm, bottom: 38mm, left: 28mm, right: 18mm),
+    margin: (top: 25mm, bottom: 38mm, left: 30mm, right: 30mm),
     header: context [
-      #set text(size: 9pt, font: fonts.main + fonts.song)
+      #set text(size: 9pt, font: fonts.main + fonts.song, fill: black)
       #set par(spacing: 0.5em)
       #let headings = query(heading.where(level: 1))
       #let current-page = here().page()
@@ -234,9 +235,11 @@
           ]
         ]
       ]
-      #line(length: 100%, stroke: rgb("#f6f6f6"))
+      #line(length: 100%, stroke: black)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("1")))
+    },
     header-ascent: 7mm,
     footer-descent: 18pt,
   )

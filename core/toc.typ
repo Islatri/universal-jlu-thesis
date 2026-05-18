@@ -37,17 +37,17 @@
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: context [
-      #set text(size: 9pt, font: fonts.main + fonts.song)
+      #set text(size: 9pt, font: fonts.main + fonts.song, fill: black)
       #set par(spacing: 0.5em)
       #align(center)[目录]
-      #line(length: 100%, stroke: rgb("#f6f6f6"))
+      #line(length: 100%, stroke: black)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
-  
-  counter(page).update(3)
   
   [
     // 空2行
