@@ -9,31 +9,37 @@
   ),
   abstract-cn: (
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.song, fill: black)
       #align(center)[摘要]
-      #line(length: 100%)
+      #line(length: 100%, stroke: black)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
   ),
   abstract-en: (
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.song, fill: black)
       #align(center)[Abstract]
-      #line(length: 100%)
+      #line(length: 100%, stroke: black)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
   ),
   toc: (
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.song, fill: black)
       #align(center)[目录]
-      #line(length: 100%)
+      #line(length: 100%, stroke: black)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
   ),
   normal: (
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.song, fill: black)
       #let headings = query(selector(heading.where(level: 1)).before(here()))
       #if headings.len() > 0 [
         #let last-heading = headings.last()
@@ -47,7 +53,9 @@
       ]
       #line(length: 100%)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("1")))
+    },
   ),
 )
 
@@ -80,52 +88,54 @@
 }
 
 #let abstract-cn-style() = {
-  counter(page).update(1)
   set page(
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: none,
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
 }
 
 #let abstract-en-style() = {
-  counter(page).update(2)
   set page(
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: none,
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
 }
 
 #let toc-style() = {
-  counter(page).update(3)
   set page(
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.song, fill: black)
       #align(center)[目录]
-      #line(length: 100%)
+      #line(length: 100%, stroke: black)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("I")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("I")))
+    },
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
 }
 
 #let content-style() = {
-  counter(page).update(1)
   set page(
     paper: "a4",
     margin: (top: 20mm, bottom: 20mm, left: 30mm, right: 30mm),
     header: context [
-      #set text(size: 9pt, font: fonts.song)
+      #set text(size: 9pt, font: fonts.song, fill: black)
       #let headings = query(selector(heading.where(level: 1)).before(here()))
       #if headings.len() > 0 [
         #let last-heading = headings.last()
@@ -139,7 +149,9 @@
       ]
       #line(length: 100%)
     ],
-    footer: context [#align(center)[#text(size: 9pt)[#counter(page).display("1")]]],
+    footer: context {
+      align(center, text(size: 9pt, counter(page).display("1")))
+    },
     header-ascent: 7mm,
     footer-descent: 18pt,
   )
